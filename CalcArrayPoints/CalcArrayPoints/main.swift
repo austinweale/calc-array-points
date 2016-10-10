@@ -9,10 +9,10 @@
 import Foundation
 
 
-//returns the average of the command-line arguments
-//assumes first arg is the program name and the last arg is not used
-func average(args: [String], start: Int) {
-    let total = args.count - 1 - start
+//returns the average of the passed-in array starting from the passed-in start point
+//starts from the passed in start point and ends at the end point
+func average(args: [String], start: Int, end: Int) {
+    let total = args.count - 1 - end
     var commandLineSum = 0
     for i in start...(args.count - 2){
         commandLineSum += Int(args[i])!
@@ -55,6 +55,23 @@ func executeOperation(first: Int, second: Int, operation: (Int, Int) -> Int) -> 
     return operation(first, second)
 }
 
+//takes in an array and performs the passed in operation over all of the elements in the array
+func executeArrayOperation(NumList: [Int], operation: (Int, Int) -> Int) -> Int{
+    if(NumList.count == 0){
+        return 0;
+    }
+    var total: Int = NumList[0];
+    for i in 1...NumList.count {
+        total = operation(total, NumList[i])
+    }
+    return total
+}
+
+//takes in two tuples and applies the passed-in math operation to them
+func executeTupleOperation(first: (Int, Int), second: (Int, Int), operation: (Int, Int) -> Int) -> (Int, Int) {
+    return (operation(first.0, second.0), operation(first.1, second.1))
+}
+
 //if they passed arguments use them
 //otherwise take in user input
 if (CommandLine.arguments.count > 1){
@@ -62,7 +79,7 @@ if (CommandLine.arguments.count > 1){
     var operation = arguments[arguments.count - 1]
     switch operation {
     case "avg":
-        average(args: arguments, start: 1)
+        average(args: arguments, start: 1, end: 1)
     case "count":
         print("result: \(arguments.count - 2)")
     case "fact":
@@ -83,7 +100,7 @@ if (CommandLine.arguments.count > 1){
         var operation = arguments[arguments.count - 1]
         switch operation {
         case "avg":
-            average(args: arguments, start: 0)
+            average(args: arguments, start: 0, end: 1)
         case "count":
             print("result: \(arguments.count - 2)")
         case "fact":
