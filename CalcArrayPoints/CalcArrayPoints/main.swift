@@ -69,7 +69,7 @@ func executeArrayOperation(NumList: [Int], operation: (Int, Int) -> Int) -> Int{
 
 //takes in two dictionaries and applies the passed-in math operation to them
 func executeDictionaryOperation(first: [String: Int], second: [String: Int], operation: (Int, Int) -> Int) -> (Int, Int) {
-    return (operation(first["x"]?, second["x"]?), operation(first["y"]?, second["y"]?))
+    return (operation(first["x"]!, second["x"]!), operation(first["y"]!, second["y"]!))
 }
 
 //takes in two tuples and applies the passed-in math operation to them
