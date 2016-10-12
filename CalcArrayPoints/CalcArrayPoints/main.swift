@@ -61,7 +61,7 @@ func executeArrayOperation(NumList: [Int], operation: (Int, Int) -> Int) -> Int{
         return 0;
     }
     var total: Int = NumList[0];
-    for i in 1...NumList.count {
+    for i in 1...(NumList.count - 1) {
         total = operation(total, NumList[i])
     }
     return total
@@ -76,6 +76,8 @@ func executeDictionaryOperation(first: [String: Int], second: [String: Int], ope
 func executeTupleOperation(first: (Int, Int), second: (Int, Int), operation: (Int, Int) -> Int) -> (Int, Int) {
     return (operation(first.0, second.0), operation(first.1, second.1))
 }
+
+
 
 //if they passed arguments use them
 //otherwise take in user input
