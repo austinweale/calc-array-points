@@ -30,6 +30,11 @@ func factorial(num: Int) -> Int{
     }
 }
 
+//returns how many elements are in an array
+func count(list: [Int]) -> Int{
+    return list.count;
+}
+
 //adds the two passed-in integers
 func add(first: Int, second: Int) -> Int{
     return first + second
